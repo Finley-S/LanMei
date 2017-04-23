@@ -1,0 +1,45 @@
+private void CustLegend(){
+        for(int i=0;i<datas.length;i++){
+            LinearLayout.LayoutParams lp=new LinearLayout.
+                    LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT);
+            lp.weight=1;//设置比重为1
+
+            LinearLayout.LayoutParams lq=new LinearLayout.
+                    LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+            lq.weight=1;//设置比重为1
+            lp.setMargins(5,30,5,30);
+            LinearLayout layout=new LinearLayout(this);//单个图例的布局
+            layout.setOrientation(LinearLayout.HORIZONTAL);//水平排列
+            layout.setGravity(Gravity.CENTER_VERTICAL);//垂直居中
+            layout.setLayoutParams(lp);//占用父布局的比重为1
+
+            //添加color
+            MyCircle circle = new MyCircle(10,colors[i]);
+
+            LinearLayout.LayoutParams colorLP=new LinearLayout.
+                    LayoutParams(20,20);
+            colorLP.setMargins(0, 0, 20, 0);
+            LinearLayout colorLayout=new LinearLayout(this);
+            colorLayout.setLayoutParams(colorLP);
+//            colorLayout.setBackgroundColor(colors[i]);
+            colorLayout.setBackground(circle);
+            layout.addView(colorLayout);
+
+            //添加label
+            TextView labelTV=new TextView(this);
+            labelTV.setText(labels[i]+" ");
+            labelTV.setLayoutParams(lq);
+            labelTV.setGravity(Gravity.CENTER_VERTICAL);
+            layout.addView(labelTV);
+
+            //添加data
+            TextView dataTV=new TextView(this);
+            dataTV.setText(datas[i]+"");
+            dataTV.setLayoutParams(lq);
+            dataTV.setGravity(Gravity.CENTER_VERTICAL);
+            layout.addView(dataTV);
+
+            ll.addView(layout);//legendLayout为外层布局即整个图例布局，是在xml文件中定义
+
+        }
+    }
