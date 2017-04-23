@@ -1,0 +1,32 @@
+public class MyCircle extends Drawable {
+
+    private final Paint mPaint;
+    private float radius;
+
+    public MyCircle(float radius,int color){
+        mPaint = new Paint();
+        mPaint.setAntiAlias(true);
+        mPaint.setColor(color);
+        this.radius = radius;
+    }
+
+    @Override
+    public void draw(@NonNull Canvas canvas) {
+        canvas.drawCircle(radius,radius,radius,mPaint);
+    }
+
+    @Override
+    public void setAlpha(@IntRange(from = 0, to = 255) int alpha) {
+        mPaint.setAlpha(alpha);
+    }
+
+    @Override
+    public void setColorFilter(@Nullable ColorFilter colorFilter) {
+        mPaint.setColorFilter(colorFilter);
+    }
+
+    @Override
+    public int getOpacity() {
+        return 0;
+    }
+}
